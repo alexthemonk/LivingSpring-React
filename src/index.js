@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+
+class Link extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.url = props.url
+        this.value = props.value
+    }
+
+    render() {
+        return (
+            <button className="link" onClick={() => window.open(this.url, '_blank')}>
+                {this.value}
+            </button>
+        )
+    }
+}
+
+class Frame extends React.Component {
+    render() {
+        return (
+        <div className="frame">
+            <Link url="https://gather.town/ZSLjHH2ATCwcs98g/livingspring" value="活动区" />
+            <Link url="https://northwestern.zoom.us/j/345691004" value="讨论区" />
+        </div>
+        )
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    <Frame />,
+    document.getElementById('root')
+)
